@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { loadReports } from '../reports';
 import Title from './Title.jsx';
 import Summary from './Summary.jsx';
@@ -41,7 +43,7 @@ export default class Dashboard extends Component {
         data={ data.filter(byCapital(capital)).reduce(summarise, summaryTemplate()) }
         gridPos={ gridPos }
       />;
-    });s
+    });
 
     return (<>
       <Title level={1}>{ title }</Title>
@@ -49,3 +51,5 @@ export default class Dashboard extends Component {
     </>);
   }
 }
+
+Dashboard.propTypes = { title: PropTypes.string.isRequired };
