@@ -1,0 +1,16 @@
+.dashboard {
+  max-width: 960px;
+
+  .block {
+    text-align: center;
+    vertical-align: middle;
+  
+    h2 {
+      text-transform: capitalize;
+    }
+    .count {
+      font-size: 3em;
+      font-weight: bold;
+    }
+  }
+}

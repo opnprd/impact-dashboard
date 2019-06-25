@@ -3,6 +3,8 @@ import { loadReports } from '../reports';
 import Title from './Title.jsx';
 import Block from './Block.jsx';
 
+const calcGrid = (pos, cols) => `grid-${Math.floor(pos / cols) + 1}-${(pos % cols) + 1}`;
+
 export default class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -21,15 +23,18 @@ export default class Dashboard extends Component {
     const { title } = this.props;
 
     const capitals = [ 'social', 'human', 'natural', 'intellectual', 'financial', 'manufacturing' ];
-    const reportBlocks = capitals.map((capital, idx) => (
-      <Block title={ capital }
+    const reportBlocks = capitals.map((capital, idx) => {
+      const gridPos = calcGrid(idx, 3);
+      return <Block title={ capital }
         key={ idx }
         data={ data.filter(_ => _.capital === capital) }
-      />));
+        gridPos={ gridPos }
+      />;
+    });s
 
     return (<>
       <Title>{ title }</Title>
-      { reportBlocks }
+      <div className='grid-wrap'>{ reportBlocks }</div>
     </>);
   }
 }

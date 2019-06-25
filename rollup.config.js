@@ -5,8 +5,9 @@ import commonjs from 'rollup-plugin-commonjs';
 import { uglify } from 'rollup-plugin-uglify';
 import copy from 'rollup-plugin-copy';
 import json from 'rollup-plugin-json';
+import scss from 'rollup-plugin-scss';
 
-const targetDir = 'public/js';
+const targetDir = 'public';
 
 // Grab the NODE_ENV and store in targetEnv, default to 'production' if undefined
 const { NODE_ENV: targetEnv = 'production' } = process.env;
@@ -37,7 +38,7 @@ const jsPlugins = [
     targets: [
       {
         src: 'src/static/*',
-        dest: 'public',
+        dest: targetDir,
       },
       {
         src: [
@@ -46,13 +47,16 @@ const jsPlugins = [
           'node_modules/react-dom/umd/react-dom.development.js',
           'node_modules/react-dom/umd/react-dom.production.min.js',
         ],
-        dest: `${targetDir}/vendor`,
+        dest: `${targetDir}/js/vendor`,
       },
       {
         src: 'examples/*',
         dest: 'public/examples',
       },
     ],
+  }),
+  scss({
+    output: `${targetDir}/style/dashboard.css`,
   }),
 ];
 
@@ -62,7 +66,7 @@ export default [
     plugins: jsPlugins,
     external: ['react', 'react-dom'],
     output: {
-      dir: targetDir,
+      dir: `${targetDir}/js`,
       format: 'iife',
       globals: {
         react: 'React',

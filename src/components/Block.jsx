@@ -3,12 +3,13 @@ import Title from './Title.jsx';
 
 function Count(props) {
   const { count } = props;
-  return (<div>{ count }</div>);
+  return (<div className='count'>{ count }</div>);
 }
 
 export default function Block(props) {
-  const { title, data } = props;
-  return (<div>
+  const { title, data, gridPos = 'grid-1-1' } = props;
+  const classes = `block ${gridPos}`;
+  return (<div className={ classes }>
     <Title>{ title }</Title>
     <Count count={ data.length } />
   </div>);
