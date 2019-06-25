@@ -7,7 +7,7 @@ import copy from 'rollup-plugin-copy';
 import json from 'rollup-plugin-json';
 import scss from 'rollup-plugin-scss';
 
-const targetDir = 'public';
+const targetDir = 'docs';
 
 // Grab the NODE_ENV and store in targetEnv, default to 'production' if undefined
 const { NODE_ENV: targetEnv = 'production' } = process.env;
@@ -57,6 +57,7 @@ const jsPlugins = [
   }),
   scss({
     output: `${targetDir}/style/dashboard.css`,
+    outputStyle: 'compressed',
   }),
 ];
 
