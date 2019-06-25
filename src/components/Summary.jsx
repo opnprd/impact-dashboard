@@ -1,9 +1,12 @@
 import React from 'react';
 import Title from './Title.jsx';
 
-function Count(props) {
-  const { count } = props;
-  return (<div className='count'>{ count }</div>);
+function Metric(props) {
+  const { value, label } = props;
+  return (<>
+    <div className='metric'>{ value }</div>
+    <Label>{ label }</Label>
+  </>);
 }
 
 function Label(props) {
@@ -13,11 +16,13 @@ function Label(props) {
 }
 
 export default function Block(props) {
-  const { title, data, label, gridPos = 'grid-1-1' } = props;
+  const { title, data, gridPos = 'grid-1-1', metric = 'count' } = props;
   const classes = `block ${gridPos} ${title}`;
+  const { value, label } = data[metric];
+  console.log(data[metric]);
+
   return (<div className={ classes }>
     <Title>{ title }</Title>
-    <Count count={ data.length } />
-    <Label>{ label }</Label>
+    <Metric value={ value } label={ label }/>
   </div>);
 }

@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
 import { loadReports } from '../reports';
 import Title from './Title.jsx';
-import Block from './Block.jsx';
+import Summary from './Summary.jsx';
 
 const calcGrid = (pos, cols) => `grid-${Math.floor(pos / cols) + 1}-${(pos % cols) + 1}`;
+
+function byCapital(capital) {
+  return _ => _.capital === capital;
+}
+
+const summaryTemplate = () => ({ count: { value: 0, label: 'reports' } });
+
+function summarise(acc, curr) {
+  acc.count.value += 1;
+  return acc;
+}
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -25,10 +36,9 @@ export default class Dashboard extends Component {
     const capitals = [ 'social', 'human', 'natural', 'intellectual', 'financial', 'manufacturing' ];
     const reportBlocks = capitals.map((capital, idx) => {
       const gridPos = calcGrid(idx, 3);
-      return <Block title={ capital }
+      return <Summary title={ capital }
         key={ idx }
-        data={ data.filter(_ => _.capital === capital) }
-        label='reports'
+        data={ data.filter(byCapital(capital)).reduce(summarise, summaryTemplate()) }
         gridPos={ gridPos }
       />;
     });s
