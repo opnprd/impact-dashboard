@@ -28,6 +28,7 @@ export default class Dashboard extends Component {
       return <Block title={ capital }
         key={ idx }
         data={ data.filter(_ => _.capital === capital) }
+        label='reports'
         gridPos={ gridPos }
       />;
     });s
