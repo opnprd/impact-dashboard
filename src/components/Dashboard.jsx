@@ -56,6 +56,12 @@ export default class Dashboard extends Component {
     window.addEventListener('keydown', (e) => {
       const actions = {
         'Escape': () => this.selectCapital(),
+        's': () => this.selectCapital('social'),
+        'h': () => this.selectCapital('human'),
+        'n': () => this.selectCapital('natural'),
+        'i': () => this.selectCapital('intellectual'),
+        'f': () => this.selectCapital('financial'),
+        'm': () => this.selectCapital('manufacturing'),
       };
       const action = actions[e.key];
       if (action !== undefined) action();
