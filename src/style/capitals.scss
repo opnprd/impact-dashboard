@@ -1,6 +1,9 @@
 @mixin capitals-colors($color) {
   background-color: $color;
-  color: darken(complement($color), 40%);
+  color: scale-color($color: complement($color), $lightness: -60%);
+  &:hover {
+    box-shadow: 0 0 4px 2px scale-color($color: $color, $lightness: -20%);
+  }
 }
 
 .block {
