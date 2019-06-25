@@ -26,8 +26,6 @@ export default function FocussedDashboard(props) {
     />
   ));
 
-  // const className = `focussed ${ capital }`
-
   return (
     <div className={ 'focussed ' + capital }>
       <Title>{ capital } Capital Reports</Title>

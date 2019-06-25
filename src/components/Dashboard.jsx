@@ -52,6 +52,16 @@ export default class Dashboard extends Component {
     return <div className='grid-wrap'>{ reportBlocks }</div>;
   }
 
+  componentDidMount() {
+    window.addEventListener('keydown', (e) => {
+      const actions = {
+        'Escape': () => this.selectCapital(),
+      };
+      const action = actions[e.key];
+      if (action !== undefined) action();
+    });
+  }
+
   focussedDashboard() {
     const { capitalFocus, data } = this.state;
     const focussedData = data.filter(byCapital(capitalFocus));
