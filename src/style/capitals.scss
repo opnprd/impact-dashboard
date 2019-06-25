@@ -2,7 +2,7 @@
   background-color: $color;
   color: scale-color($color: complement($color), $lightness: -60%);
   &:hover {
-    box-shadow: 0 0 4px 2px scale-color($color: $color, $lightness: -20%);
+    box-shadow: inset 0 0 20px 5px scale-color($color: $color, $lightness: -20%);
   }
 }
 

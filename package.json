@@ -1,7 +1,6 @@
 {
   "scripts": {
     "test": "nyc --all mocha",
-    "prebuild": "npm prune",
     "build": "rollup --config",
     "lint": "eslint .",
     "precoverage": "npm test",
