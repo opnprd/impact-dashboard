@@ -33,7 +33,7 @@ export default class Dashboard extends Component {
     });s
 
     return (<>
-      <Title>{ title }</Title>
+      <Title level={1}>{ title }</Title>
       <div className='grid-wrap'>{ reportBlocks }</div>
     </>);
   }

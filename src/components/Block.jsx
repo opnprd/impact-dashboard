@@ -8,7 +8,7 @@ function Count(props) {
 
 export default function Block(props) {
   const { title, data, gridPos = 'grid-1-1' } = props;
-  const classes = `block ${gridPos}`;
+  const classes = `block ${gridPos} ${title}`;
   return (<div className={ classes }>
     <Title>{ title }</Title>
     <Count count={ data.length } />

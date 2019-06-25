@@ -1,7 +1,11 @@
+$desktop-width: 960px;
+
 @import '../../node_modules/normalize.scss/normalize.scss';
+@import './mixins.scss';
 @import './grid.scss';
 @import './layout.scss';
 @import './typography.scss';
 @import './dashboard.scss';
+@import './capitals.scss';
 
 
