@@ -1,0 +1,17 @@
+{
+  "lines": 90,
+  "statements": 90,
+  "functions": 90,
+  "branches": 90,
+  "exclude": [
+    "reports/",
+    "node_modules/",
+    "test/"
+  ],
+  "reporter": [
+    "lcov",
+    "cobertura",
+    "text-summary"
+  ],
+  "report-dir": "reports"
+}
