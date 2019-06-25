@@ -1,7 +1,11 @@
 module.exports = {
   root: true,
-  parserOptions: { ecmaVersion: 10 },
-  extends: 'standard',
+  parserOptions: { ecmaFeatures: { jsx: true } },
+  env: { browser: true, es6: true },
+  extends: [
+    'standard',
+    'plugin:react/recommended',
+  ],
   rules: {
     'semi': [ 'error', 'always' ],
     'comma-dangle': [ 'error', 'always-multiline' ],

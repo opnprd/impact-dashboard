@@ -1,13 +1,19 @@
 {
   "scripts": {
     "test": "nyc --all mocha",
-    "build": "npm prune",
+    "prebuild": "npm prune",
+    "build": "rollup --config",
     "lint": "eslint .",
     "precoverage": "npm test",
     "coverage": "nyc check-coverage",
     "scan": "npm audit"
   },
   "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.4.5",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "eslint": "^5.16.0",
@@ -16,11 +22,22 @@
     "eslint-plugin-mocha": "^5.3.0",
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-react": "^7.14.2",
     "eslint-plugin-standard": "^4.0.0",
     "mocha": "^6.1.4",
     "mocha-multi-reporters": "^1.1.7",
     "mochawesome": "^4.0.0",
     "nyc": "^14.1.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "rollup": "^1.16.2",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-copy": "^3.0.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.1.0",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-uglify": "^6.0.2",
     "sinon": "^7.3.2",
     "sinon-chai": "^3.3.0"
   }

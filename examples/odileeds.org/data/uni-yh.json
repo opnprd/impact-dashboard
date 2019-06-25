@@ -1,0 +1,9 @@
+{
+	"url": "https://odileeds.org/data/uni-yh.html",
+  "capital": "intellectual",
+  "measure": {
+    "value": 27,
+    "label": "Universities",
+    "geography": ["E12000003"]  
+  }
+}

@@ -1,0 +1,10 @@
+{
+	"url": "https://yorkshirewater.co.uk/capitals/human",
+  "capital": "human",
+  "measure": {
+    "value": 30,
+    "unit": "%",
+    "label": "Female senior leaders",
+    "geography": ["E12000003"]
+  }
+}

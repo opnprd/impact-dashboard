@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "oneOf": [
+    {
+      "$ref": "#/definitions/reportSyndicationFormat"
+    },
+    {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/reportSyndicationFormat"
+      }
+    }
+  ],
+  "definitions": {
+    "capital": {
+      "title": "Six Capitals Category",
+      "type": "string",
+      "enum": [
+        "social",
+        "human",
+        "financial",
+        "manufacturing",
+        "intellectual",
+        "natural"
+      ]
+    },
+    "measure": {
+      "description": "Measurement to be reported in syndication",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "geography": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/onsRegion"
+          }
+        }
+      },
+      "examples": [
+        {
+          "value": 88,
+          "unit": "km",
+          "label": "Length of river improved"
+        }
+      ],
+      "required": [ "value" ]
+    },
+    "reportSyndicationFormat": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "examples": [
+            "https://yorkshirewater.co.uk/capitals/natural"
+          ]
+        },
+        "capital": {
+          "$ref": "#/definitions/capital"
+        },
+        "measure": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/measure"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/measure"
+              }
+            }
+          ]
+        }
+      },
+      "title": "Impact Report Syndication Schema",
+      "required": [
+        "url",
+        "capital"
+      ]
+    },
+    "onsRegion": {
+      "type": "string",
+      "title": "ONS Region",
+      "examples": [
+        "E12000003"
+      ],
+      "pattern": "^[EWSNL][0-9]{2}[0-9]{6}$"
+    }
+  }
+}

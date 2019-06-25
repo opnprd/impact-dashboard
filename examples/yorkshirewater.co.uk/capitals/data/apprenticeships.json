@@ -1,0 +1,9 @@
+{
+	"url": "https://yorkshirewater.co.uk/capitals/human",
+	"capital": "human",
+	"measure": {
+    "value": 22,
+	  "label": "Apprenticeships",
+    "geography": ["E12000003"]
+  }
+}
