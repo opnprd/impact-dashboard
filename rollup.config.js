@@ -51,7 +51,7 @@ const jsPlugins = [
       },
       {
         src: 'examples/*',
-        dest: 'public/examples',
+        dest: `${targetDir}/examples`,
       },
     ],
   }),

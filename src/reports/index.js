@@ -2,12 +2,11 @@ async function loadOneReport(options = {}) {
   const { url } = options;
   if (url === undefined) throw new Error('Please provide a URL');
 
-  const networkRequest = await fetch(url);
   let content;
   try {
+    const networkRequest = await fetch(url);
     content = await networkRequest.json();
   } catch (error) {
-    console.error(error);
     return;
   }
   return content;
@@ -23,5 +22,5 @@ export async function loadReports(options) {
     throw error;
   }
   const reportData = await Promise.all(reports.map(url => loadOneReport({ url })));
-  return reportData;
+  return reportData.filter(_ => _);
 }

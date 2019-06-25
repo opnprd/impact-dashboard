@@ -1,0 +1,9 @@
+{
+	"url": "https://odileeds.org/data/uni-wy.html",
+  "capital": "intellectual",
+  "measure": {
+    "value": 6,
+    "label": "Universities",
+    "geography": ["E11000006"]  
+  }
+}

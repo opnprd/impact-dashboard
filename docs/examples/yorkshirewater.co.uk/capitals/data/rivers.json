@@ -1,0 +1,11 @@
+{
+	"url": "https://yorkshirewater.co.uk/capitals/natural",
+  "capital": "natural",
+  "measure": {
+    "value": 88,
+    "unit": "km",
+    "label": "Length of river improved",
+    "geography": ["E12000003"]
+  }
+}
+	
