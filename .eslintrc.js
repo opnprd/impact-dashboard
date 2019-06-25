@@ -6,6 +6,10 @@ module.exports = {
     'standard',
     'plugin:react/recommended',
   ],
+  plugins: [
+    'react',
+  ],
+  settings: { react: { version: 'detect' } },
   rules: {
     'semi': [ 'error', 'always' ],
     'comma-dangle': [ 'error', 'always-multiline' ],
