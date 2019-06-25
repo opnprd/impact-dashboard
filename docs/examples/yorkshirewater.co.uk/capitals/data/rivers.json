@@ -1,6 +1,7 @@
 {
 	"url": "./fake_report",
   "capital": "natural",
+  "description": "River improvement report (SAMPLE)",
   "measure": {
     "value": 88,
     "unit": "km",

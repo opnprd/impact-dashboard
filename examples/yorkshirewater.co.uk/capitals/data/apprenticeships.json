@@ -1,6 +1,7 @@
 {
 	"url": "./fake_report",
 	"capital": "human",
+	"description": "Report on workforce in Yorkshire Water (SAMPLE)",
 	"measure": {
     "value": 22,
 	  "label": "Apprenticeships",

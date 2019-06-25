@@ -1,6 +1,7 @@
 {
 	"url": "./fake_report",
   "capital": "human",
+  "description": "Report on workforce in Yorkshire Water (SAMPLE)",
   "measure": {
     "value": 30,
     "unit": "%",

@@ -1,6 +1,7 @@
 {
 	"url": "./fake_report",
   "capital": "intellectual",
+  "description": "Report on universities in Yorkshire and The Humber (SAMPLE)",
   "measure": {
     "value": 27,
     "label": "Universities",

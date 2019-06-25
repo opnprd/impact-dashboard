@@ -71,6 +71,10 @@
         "capital": {
           "$ref": "#/definitions/capital"
         },
+        "description": {
+          "type": "string",
+          "description": "Brief description of the linked report"
+        },
         "measure": {
           "oneOf": [
             {
@@ -88,7 +92,8 @@
       "title": "Impact Report Syndication Schema",
       "required": [
         "url",
-        "capital"
+        "capital",
+        "description"
       ]
     },
     "onsRegion": {
