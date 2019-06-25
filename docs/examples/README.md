@@ -1,12 +1,21 @@
+# Example datasets
+
+The following is a proposal for the Report Syndication Format.
+
 URL: https://odileeds.org/data/uni-yh.json
+
+```json
 {
 	"url": "https://odileeds.org/data/uni-yh.html",
 	"capital": "intellectual",
-	"value": 27,
-	"label": "Universities",
-	"geography": ["E12000003"]	// Yorkshire and the Humber
+	"description": "Universities in Yorkshire and the Humber",
+	"measure": {
+		"value": 27,
+		"label": "Universities",
+		"geography": ["E12000003"]
+	}
 }
-
+```
 
 
 URL: https://odileeds.org/data/uni-wy.json

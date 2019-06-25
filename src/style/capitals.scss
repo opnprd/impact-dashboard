@@ -1,13 +1,3 @@
-$color-sat: 50%;
-$color-lightness: 70%;
-
-$social: hsl(0, $color-sat, $color-lightness);
-$human: hsl(60, $color-sat, $color-lightness);
-$natural: hsl(120, $color-sat, $color-lightness);
-$intellectual: hsl(180, $color-sat, $color-lightness);
-$financial: hsl(240, $color-sat, $color-lightness);
-$manufacturing: hsl(300, $color-sat, $color-lightness);
-
 @mixin capitals-colors($color) {
   background-color: $color;
   color: darken(complement($color), 40%);

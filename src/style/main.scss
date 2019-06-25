@@ -1,11 +1,21 @@
 $desktop-width: 960px;
 
+$colour-sat: 50%;
+$colour-lightness: 70%;
+
+$social: hsl(0, $colour-sat, $colour-lightness);
+$human: hsl(60, $colour-sat, $colour-lightness);
+$natural: hsl(120, $colour-sat, $colour-lightness);
+$intellectual: hsl(180, $colour-sat, $colour-lightness);
+$financial: hsl(240, $colour-sat, $colour-lightness);
+$manufacturing: hsl(300, $colour-sat, $colour-lightness);
+
 @import '../../node_modules/normalize.scss/normalize.scss';
 @import './mixins.scss';
 @import './grid.scss';
 @import './layout.scss';
 @import './typography.scss';
-@import './dashboard.scss';
 @import './capitals.scss';
+@import './dashboard.scss';
 
 

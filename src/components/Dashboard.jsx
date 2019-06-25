@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import { loadReports } from '../reports';
 import Title from './Title.jsx';
 import Summary from './Summary.jsx';
+import FocussedDashboard from './FocussedDashboard.jsx';
+
+const capitals = [ 'social', 'human', 'natural', 'intellectual', 'financial', 'manufacturing' ];
 
 const calcGrid = (pos, cols) => `grid-${Math.floor(pos / cols) + 1}-${(pos % cols) + 1}`;
 
@@ -21,35 +24,65 @@ function summarise(acc, curr) {
 export default class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: [] };
+    this.state = { data: [], capitalFocus: undefined };
     this.loadReports();
   }
 
   async loadReports() {
-    // eslint-disable-next-line react/prop-types
     const data = await loadReports({ source: this.props.source });
     this.setState({ data });
   }
 
-  render() {
-    const { data } = this.state;
-    const { title } = this.props;
+  selectCapital(capital) {
+    this.setState({ capitalFocus: capital });
+  }
 
-    const capitals = [ 'social', 'human', 'natural', 'intellectual', 'financial', 'manufacturing' ];
+  baseDashboard() {
+    const { data } = this.state;
+
     const reportBlocks = capitals.map((capital, idx) => {
       const gridPos = calcGrid(idx, 3);
       return <Summary title={ capital }
         key={ idx }
         data={ data.filter(byCapital(capital)).reduce(summarise, summaryTemplate()) }
         gridPos={ gridPos }
+        clickHandler={ (e) => this.selectCapital(capital) }
       />;
     });
+    return <div className='grid-wrap'>{ reportBlocks }</div>;
+  }
+
+  focussedDashboard() {
+    const { capitalFocus, data } = this.state;
+    const focussedData = data.filter(byCapital(capitalFocus));
+
+    return <FocussedDashboard
+      capital={ capitalFocus }
+      data={ focussedData }
+      clickHandler={(e) => this.selectCapital()}
+    />;
+  }
+
+  render() {
+    const { capitalFocus } = this.state;
+    const { title } = this.props;
+
+    let content;
+
+    if (capitalFocus === undefined) {
+      content = this.baseDashboard();
+    } else {
+      content = this.focussedDashboard();
+    }
 
     return (<>
       <Title level={1}>{ title }</Title>
-      <div className='grid-wrap'>{ reportBlocks }</div>
+      { content }
     </>);
   }
 }
 
-Dashboard.propTypes = { title: PropTypes.string.isRequired };
+Dashboard.propTypes = {
+  title: PropTypes.string.isRequired,
+  source: PropTypes.string.isRequired,
+};
