@@ -42,5 +42,8 @@
     "rollup-plugin-uglify": "^6.0.2",
     "sinon": "^7.3.2",
     "sinon-chai": "^3.3.0"
+  },
+  "dependencies": {
+    "ajv": "^6.10.0"
   }
 }

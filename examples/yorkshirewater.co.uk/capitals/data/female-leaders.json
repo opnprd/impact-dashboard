@@ -1,11 +1,11 @@
 {
-	"url": "./fake_report",
+	"url": "http:///fake_report",
   "capital": "human",
   "description": "Report on workforce in Yorkshire Water (SAMPLE)",
   "measure": {
     "value": 30,
     "unit": "%",
-    "label": "Female senior leaders",
-    "geography": ["E12000003"]
-  }
+    "label": "Female senior leaders"
+  },
+  "geography": "E12000003"
 }

@@ -1,3 +1,5 @@
+import { validateSyndicationFormat } from './validate';
+
 async function loadOneReport(options = {}) {
   const { url } = options;
   if (url === undefined) throw new Error('Please provide a URL');
@@ -26,5 +28,7 @@ export async function loadReports(options) {
     throw error;
   }
   const reportData = await Promise.all(reports.map(url => loadOneReport({ url })));
-  return reportData.filter(_ => _).reduce(flattenArray, []);
+  return reportData.filter(_ => _)
+    .reduce(flattenArray, [])
+    .filter(_ => validateSyndicationFormat(_).valid);
 }

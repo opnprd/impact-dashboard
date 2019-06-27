@@ -1,10 +1,10 @@
 {
-	"url": "./fake_report",
+	"url": "http:///fake_report",
   "capital": "intellectual",
   "description": "Report on universities in Yorkshire and The Humber (SAMPLE)",
   "measure": {
     "value": 27,
-    "label": "Universities",
-    "geography": ["E12000003"]  
-  }
+    "label": "Universities"
+  },
+  "geography": "E12000003"
 }

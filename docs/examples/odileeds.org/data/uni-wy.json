@@ -1,10 +1,10 @@
 {
-	"url": "./fake_report",
+	"url": "http:///fake_report",
   "capital": "intellectual",
   "description": "Report on universities in West Yorkshire (SAMPLE)",
   "measure": {
     "value": 6,
-    "label": "Universities",
-    "geography": ["E11000006"]  
-  }
+    "label": "Universities"
+  },
+  "geography": "E11000006"
 }
