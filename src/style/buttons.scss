@@ -1,0 +1,16 @@
+$button-colour: hsl(0, 0%, 90%);
+
+.dismiss {
+  width: 1.2em;
+  height: 1.2em;
+  padding: 0.7em;
+  border-radius: 0.5em;
+  background-color: $button-colour;
+  cursor: pointer;
+  svg {
+    width: 100%;
+  }
+  &:hover {
+    background-color: change-color($color: $button-colour, $lightness: 70%);
+  }
+}

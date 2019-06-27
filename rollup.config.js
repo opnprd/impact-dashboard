@@ -6,6 +6,7 @@ import { uglify } from 'rollup-plugin-uglify';
 import copy from 'rollup-plugin-copy';
 import json from 'rollup-plugin-json';
 import scss from 'rollup-plugin-scss';
+import svgo from 'rollup-plugin-svgo';
 
 const targetDir = 'docs';
 
@@ -59,6 +60,7 @@ const jsPlugins = [
     output: `${targetDir}/style/dashboard.css`,
     outputStyle: 'compressed',
   }),
+  svgo(),
 ];
 
 export default [

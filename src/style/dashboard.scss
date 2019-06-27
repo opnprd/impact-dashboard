@@ -43,20 +43,10 @@
     &.financial { @include capital-border-highlight($financial); }
     &.manufacturing { @include capital-border-highlight($manufacturing); }
 
-    a#dismiss {
+    a.dismiss {
       position: absolute;
       top: 0;
       right: 0;
-      padding: 0.5em;
-
-      background-color: hsl(0, 0%, 90%);
-      border-radius: 0.2em;
-
-      cursor: pointer;
-
-      &:hover {
-        background-color: hsl(0, 0%, 95%);
-      }
     }
   }
 }

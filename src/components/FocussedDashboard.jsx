@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import closeIcon from './close.svg';
+
 import Title from './Title.jsx';
 
 function ReportReference(props) {
@@ -12,9 +14,17 @@ ReportReference.propTypes = {
   title: PropTypes.string.isRequired,
 };
 
-function X() {
-  return 'X';
+function CloseButton(props) {
+  const { clickHandler } = props;
+
+  return <a
+    id='dismiss' onClick={ clickHandler }
+    className='dismiss'
+    alt='Dismiss'
+    dangerouslySetInnerHTML={{ __html: closeIcon }}
+  ></a>;
 }
+CloseButton.propTypes = { clickHandler: PropTypes.func };
 
 export default function FocussedDashboard(props) {
   const { clickHandler, data, capital } = props;
@@ -30,12 +40,12 @@ export default function FocussedDashboard(props) {
     <div className={ 'focussed ' + capital }>
       <Title>{ capital } Capital Reports</Title>
       { reports }
-      <a id='dismiss' onClick={ clickHandler } alt='Dismiss'><X/></a>
+      <CloseButton clickHandler={clickHandler}/>
     </div>
   );
 }
 FocussedDashboard.propTypes = {
   clickHandler: PropTypes.func,
-  data: PropTypes.object,
+  data: PropTypes.array,
   capital: PropTypes.string,
 };
