@@ -1,4 +1,5 @@
 [
+  "./report/odiLeedsBusinessRates.json",
   "./examples/odileeds.org/data/uni-wy.json",
   "./examples/odileeds.org/data/uni-yh.json",
   "./examples/yorkshirewater.co.uk/capitals/data/apprenticeships.json",

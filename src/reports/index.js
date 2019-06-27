@@ -12,6 +12,10 @@ async function loadOneReport(options = {}) {
   return content;
 }
 
+function flattenArray(acc, curr) {
+  return acc.concat(curr);
+}
+
 export async function loadReports(options) {
   const { source } = options;
   const networkRequest = await fetch(source);
@@ -22,5 +26,5 @@ export async function loadReports(options) {
     throw error;
   }
   const reportData = await Promise.all(reports.map(url => loadOneReport({ url })));
-  return reportData.filter(_ => _);
+  return reportData.filter(_ => _).reduce(flattenArray, []);
 }

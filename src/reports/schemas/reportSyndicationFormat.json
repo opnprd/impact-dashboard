@@ -41,12 +41,6 @@
         "date": {
           "type": "string",
           "format": "date"
-        },
-        "geography": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/onsRegion"
-          }
         }
       },
       "examples": [
@@ -74,6 +68,9 @@
         "description": {
           "type": "string",
           "description": "Brief description of the linked report"
+        },
+        "geography": {
+          "$ref": "#/definitions/onsRegion"
         },
         "measure": {
           "oneOf": [
