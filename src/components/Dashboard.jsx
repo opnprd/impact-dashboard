@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { loadReports } from '../reports';
 import Title from './Title.jsx';
 import MainDashboard from './MainDashboard.jsx';
 import FocussedDashboard from './FocussedDashboard.jsx';
+import Validator from './Validator.jsx';
 
 function goTo(path) {
   window.location = `#${path}`;
+}
+
+function Menu(props) {
+  return <nav className='menu'>
+    <ul>
+      <li><NavLink exact={ true } to="/">Dashboard</NavLink></li>
+      <li><NavLink to="/validator">Report Syndication</NavLink></li>
+    </ul>
+  </nav>;
 }
 
 export default class Dashboard extends Component {
@@ -46,10 +56,15 @@ export default class Dashboard extends Component {
     return (<>
       <Title level={1}>{ title }</Title>
       <Router>
-        <Route exact path="/"
-          render={props => <MainDashboard {...props} data={ data } /> } />
-        <Route path="/capital/:focus"
-          render={props => <FocussedDashboard {...props} data={ data } /> } />
+        <Menu />
+        <Switch>
+          <Route exact path="/"
+            render={props => <MainDashboard {...props} data={ data } /> } />
+          <Route path="/capital/:focus"
+            render={props => <FocussedDashboard {...props} data={ data } /> } />
+          <Route path="/validator"
+            render={props => <Validator {...props} /> } />
+        </Switch>
       </Router>
     </>);
   }

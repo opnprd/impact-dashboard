@@ -3,6 +3,8 @@ $desktop-width: 960px;
 $colour-sat: 50%;
 $colour-lightness: 70%;
 
+$yorkshire-blue: hsl(194, 100%, 50%);
+
 $social: hsl(0, $colour-sat, $colour-lightness);
 $human: hsl(60, $colour-sat, $colour-lightness);
 $natural: hsl(120, $colour-sat, $colour-lightness);
@@ -18,4 +20,5 @@ $manufacturing: hsl(300, $colour-sat, $colour-lightness);
 @import './capitals.scss';
 @import './dashboard.scss';
 @import './buttons.scss';
+@import './menu.scss';
 
