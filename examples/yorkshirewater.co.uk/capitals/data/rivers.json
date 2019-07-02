@@ -7,6 +7,6 @@
     "unit": "km",
     "label": "Length of river improved"
   },
-  "geography": ["E12000003"]
+  "geography": "E12000003"
 }
 	

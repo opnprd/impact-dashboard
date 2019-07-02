@@ -36,15 +36,16 @@ export default class Dashboard extends Component {
   componentDidMount() {
     window.addEventListener('keydown', (e) => {
       const actions = {
-        'Escape': () => goTo('/'),
+        'escape': () => goTo('/'),
         's': () => goTo('/capital/social'),
         'h': () => goTo('/capital/human'),
         'n': () => goTo('/capital/natural'),
         'i': () => goTo('/capital/intellectual'),
         'f': () => goTo('/capital/financial'),
         'm': () => goTo('/capital/manufacturing'),
+        'v': () => goTo('/validator'),
       };
-      const action = actions[e.key];
+      const action = actions[e.key.toLowerCase()];
       if (action !== undefined) action();
     });
   }

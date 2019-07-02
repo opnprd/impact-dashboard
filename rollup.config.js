@@ -7,6 +7,7 @@ import copy from 'rollup-plugin-copy';
 import json from 'rollup-plugin-json';
 import scss from 'rollup-plugin-scss';
 import svgo from 'rollup-plugin-svgo';
+import md from 'rollup-plugin-md';
 
 const targetDir = 'docs';
 
@@ -64,6 +65,7 @@ const jsPlugins = [
     outputStyle: 'compressed',
   }),
   svgo(),
+  md(),
 ];
 
 export default [
