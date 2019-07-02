@@ -1,30 +1,20 @@
 import React, { Component } from 'react';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { loadReports } from '../reports';
 import Title from './Title.jsx';
-import Summary from './Summary.jsx';
+import MainDashboard from './MainDashboard.jsx';
 import FocussedDashboard from './FocussedDashboard.jsx';
 
-const capitals = [ 'social', 'human', 'natural', 'intellectual', 'financial', 'manufacturing' ];
-
-const calcGrid = (pos, cols) => `grid-${Math.floor(pos / cols) + 1}-${(pos % cols) + 1}`;
-
-function byCapital(capital) {
-  return _ => _.capital === capital;
-}
-
-const summaryTemplate = () => ({ count: { value: 0, label: 'reports' } });
-
-function summarise(acc, curr) {
-  acc.count.value += 1;
-  return acc;
+function goTo(path) {
+  window.location = `#${path}`;
 }
 
 export default class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: [], capitalFocus: undefined };
+    this.state = { data: [] };
     this.loadReports();
   }
 
@@ -33,67 +23,34 @@ export default class Dashboard extends Component {
     this.setState({ data });
   }
 
-  selectCapital(capital) {
-    this.setState({ capitalFocus: capital });
-  }
-
-  baseDashboard() {
-    const { data } = this.state;
-
-    const reportBlocks = capitals.map((capital, idx) => {
-      const gridPos = calcGrid(idx, 3);
-      return <Summary title={ capital }
-        key={ idx }
-        data={ data.filter(byCapital(capital)).reduce(summarise, summaryTemplate()) }
-        gridPos={ gridPos }
-        clickHandler={ (e) => this.selectCapital(capital) }
-      />;
-    });
-    return <div className='grid-wrap'>{ reportBlocks }</div>;
-  }
-
   componentDidMount() {
     window.addEventListener('keydown', (e) => {
       const actions = {
-        'Escape': () => this.selectCapital(),
-        's': () => this.selectCapital('social'),
-        'h': () => this.selectCapital('human'),
-        'n': () => this.selectCapital('natural'),
-        'i': () => this.selectCapital('intellectual'),
-        'f': () => this.selectCapital('financial'),
-        'm': () => this.selectCapital('manufacturing'),
+        'Escape': () => goTo('/'),
+        's': () => goTo('/capital/social'),
+        'h': () => goTo('/capital/human'),
+        'n': () => goTo('/capital/natural'),
+        'i': () => goTo('/capital/intellectual'),
+        'f': () => goTo('/capital/financial'),
+        'm': () => goTo('/capital/manufacturing'),
       };
       const action = actions[e.key];
       if (action !== undefined) action();
     });
   }
 
-  focussedDashboard() {
-    const { capitalFocus, data } = this.state;
-    const focussedData = data.filter(byCapital(capitalFocus));
-
-    return <FocussedDashboard
-      capital={ capitalFocus }
-      data={ focussedData }
-      clickHandler={(e) => this.selectCapital()}
-    />;
-  }
-
   render() {
-    const { capitalFocus } = this.state;
+    const { data } = this.state;
     const { title } = this.props;
-
-    let content;
-
-    if (capitalFocus === undefined) {
-      content = this.baseDashboard();
-    } else {
-      content = this.focussedDashboard();
-    }
 
     return (<>
       <Title level={1}>{ title }</Title>
-      { content }
+      <Router>
+        <Route exact path="/"
+          render={props => <MainDashboard {...props} data={ data } /> } />
+        <Route path="/capital/:focus"
+          render={props => <FocussedDashboard {...props} data={ data } /> } />
+      </Router>
     </>);
   }
 }

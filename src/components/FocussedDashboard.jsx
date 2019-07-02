@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import closeIcon from './close.svg';
 
 import Title from './Title.jsx';
+import { byCapital } from '../utils';
 
 function ReportReference(props) {
   const { title = (<em>(Unknown report title)</em>), link } = props;
@@ -15,37 +17,40 @@ ReportReference.propTypes = {
 };
 
 function CloseButton(props) {
-  const { clickHandler } = props;
+  const { link } = props;
 
-  return <a
-    id='dismiss' onClick={ clickHandler }
+  return <Link
+    to={ link }
+    id='dismiss'
     className='dismiss'
     alt='Dismiss'
     dangerouslySetInnerHTML={{ __html: closeIcon }}
-  ></a>;
+  ></Link>;
 }
-CloseButton.propTypes = { clickHandler: PropTypes.func };
+CloseButton.propTypes = { link: PropTypes.string };
 
 export default function FocussedDashboard(props) {
-  const { clickHandler, data, capital } = props;
+  const { match: { params: { focus } }, data } = props;
+  const focussedData = data.filter(byCapital(focus));
 
-  const reports = data.map((_, idx) => (
+  const reports = focussedData.map((_, idx) => (
     <ReportReference key={ idx }
       title={ _.description }
       link={ _.url }
     />
   ));
 
+  const link = '/';
+
   return (
-    <div className={ 'focussed ' + capital }>
-      <Title>{ capital } Capital Reports</Title>
+    <div className={ 'focussed ' + focus }>
+      <Title>{ focus } Capital Reports</Title>
       { reports }
-      <CloseButton clickHandler={clickHandler}/>
+      <CloseButton link={ link }/>
     </div>
   );
 }
 FocussedDashboard.propTypes = {
-  clickHandler: PropTypes.func,
+  match: PropTypes.object,
   data: PropTypes.array,
-  capital: PropTypes.string,
 };

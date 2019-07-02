@@ -33,7 +33,10 @@ const jsPlugins = [
     ],
   }),
   resolve(),
-  commonjs(),
+  commonjs({
+    include: 'node_modules/**',
+    namedExports: { 'node_modules/react-is/index.js': ['isValidElementType'] },
+  }),
   isDev ? undefined : uglify(), // Uglify code unless we're targetting 'development'
   copy({ // Copy modules to the vendor directory
     targets: [

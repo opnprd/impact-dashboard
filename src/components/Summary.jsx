@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import Title from './Title.jsx';
 
@@ -24,13 +25,15 @@ function Label(props) {
 Label.propTypes = { children: PropTypes.node };
 
 export default function Summary(props) {
-  const { title, data, gridPos = 'grid-1-1', metric = 'count', clickHandler } = props;
+  const { title, data, gridPos = 'grid-1-1', metric = 'count', link } = props;
   const classes = `block ${gridPos} ${title}`;
   const { value, label } = data[metric];
 
-  return (<div className={ classes } onClick={ clickHandler }>
-    <Title>{ title }</Title>
-    <Metric value={ value } label={ label }/>
+  return (<div className={ classes }>
+    <Link to={ link }>
+      <Title>{ title }</Title>
+      <Metric value={ value } label={ label }/>
+    </Link>
   </div>);
 }
 
@@ -39,5 +42,5 @@ Summary.propTypes = {
   data: PropTypes.object.isRequired,
   gridPos: PropTypes.string,
   metric: PropTypes.string,
-  clickHandler: PropTypes.func,
+  link: PropTypes.string,
 };
