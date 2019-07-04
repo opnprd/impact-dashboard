@@ -83,4 +83,13 @@
       right: 0;
     }
   }
+
+  #show-doc {
+    margin: 0.5em;
+  }
+}
+
+#documentation {
+  display: none;
+  #show-doc:checked ~ & { display: initial; }
 }
