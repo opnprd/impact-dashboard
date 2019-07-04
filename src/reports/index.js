@@ -1,7 +1,7 @@
 import { validateSyndicationFormat } from './validate';
 
 async function loadOneReport(options = {}) {
-  const { url } = options;
+  const { url, action } = options;
   if (url === undefined) throw new Error('Please provide a URL');
 
   let content;
@@ -11,15 +11,13 @@ async function loadOneReport(options = {}) {
   } catch (error) {
     return;
   }
-  return content;
-}
-
-function flattenArray(acc, curr) {
-  return acc.concat(curr);
+  if (validateSyndicationFormat(content).valid) {
+    action(content);
+  }
 }
 
 export async function loadReports(options) {
-  const { source } = options;
+  const { source, action } = options;
   const networkRequest = await fetch(source);
   let reports = [];
   try {
@@ -27,8 +25,5 @@ export async function loadReports(options) {
   } catch (error) {
     throw error;
   }
-  const reportData = await Promise.all(reports.map(url => loadOneReport({ url })));
-  return reportData.filter(_ => _)
-    .reduce(flattenArray, [])
-    .filter(_ => validateSyndicationFormat(_).valid);
+  await Promise.all(reports.map(url => loadOneReport({ url, action })));
 }

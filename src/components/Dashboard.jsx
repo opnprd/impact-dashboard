@@ -24,16 +24,27 @@ function Menu(props) {
 export default class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: [] };
-    this.loadReports();
+    this.state = { data: [], loading: false };
   }
 
   async loadReports() {
-    const data = await loadReports({ source: this.props.source });
+    this.setState({ loading: true });
+    await loadReports({
+      source: this.props.source,
+      action: (data) => this.addReports(data),
+    });
+    this.setState({ loading: false });
+  }
+
+  addReports(reports) {
+    const { data: currentData } = this.state;
+    const data = currentData.concat(reports);
     this.setState({ data });
   }
 
   componentDidMount() {
+    this.loadReports();
+
     window.addEventListener('keydown', (e) => {
       const actions = {
         'escape': () => goTo('/'),
