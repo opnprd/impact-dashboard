@@ -24,18 +24,20 @@ export default class Dashboard extends Component {
   }
 
   async loadReports() {
-    this.setState({ data: [], loading: true });
+    this.setState(() => ({ data: [], loading: true }));
     await loadReports({
       source: this.props.source,
       action: (data) => this.addReports(data),
     });
-    this.setState({ loading: false });
+    this.setState(() => ({ loading: false }));
   }
 
   addReports(reports) {
-    const { data: currentData } = this.state;
-    const data = currentData.concat(reports);
-    this.setState({ data });
+    this.setState((state) => {
+      const { data: currentData } = state;
+      const data = currentData.concat(reports);
+      return { data };
+    });
   }
 
   componentDidMount() {
