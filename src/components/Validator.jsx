@@ -47,35 +47,34 @@ const shortcutHandler = createKeydownHandler({
   },
 });
 
+function validate(value) {
+  let valid;
+  let errors;
+  try {
+    const schema = JSON.parse(value);
+    ({ valid, errors = [] } = validateSyndicationFormat(schema));
+  } catch (error) {
+    valid = false;
+    errors = [ { message: 'invalid JSON document', path: '' } ];
+  }
+
+  return { valid, errors };
+}
+
 export default class Validator extends Component {
   constructor(props) {
     super(props);
     this.state = { value: '' };
     this.updateSchema = this.updateSchema.bind(this);
-    this.validate = this.validate.bind(this);
   }
 
   updateSchema(event) {
     this.setState({ value: event.target.value });
   }
 
-  validate() {
-    let valid;
-    let errors;
-    try {
-      const schema = JSON.parse(event.target.value);
-      ({ valid, errors = [] } = validateSyndicationFormat(schema));
-    } catch (error) {
-      valid = false;
-      errors = [ { message: 'invalid JSON document', path: '' } ];
-    }
-
-    return { valid, errors };
-  }
-
   render() {
     let errorSection;
-    const { valid, errors } = this.validate();
+    const { valid, errors } = validate(this.state.value);
 
     if (!valid) {
       const errorComponents = errors.map((_, idx) => (<ValidationError key={ idx } error={ _ } />));
@@ -90,7 +89,6 @@ export default class Validator extends Component {
       <Documentation />
       <section className='validator'>
         <textarea value={this.state.value} onChange={this.updateSchema}></textarea>
-        <button onClick={this.validate}>Validate!</button>
         { errorSection }
       </section>
     </>;
