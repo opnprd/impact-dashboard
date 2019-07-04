@@ -33,6 +33,16 @@
   main {
     @include central-column();
     @extend %centred;
+
+    section {
+      margin-left: 1em;
+      margin-right: 1em;
+
+      @include desktop {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
   }
 
   .block {
