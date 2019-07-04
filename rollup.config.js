@@ -58,6 +58,10 @@ const jsPlugins = [
         src: 'examples/*',
         dest: `${targetDir}/examples`,
       },
+      {
+        src: 'reports.json',
+        dest: `${targetDir}/config`,
+      },
     ],
   }),
   scss({

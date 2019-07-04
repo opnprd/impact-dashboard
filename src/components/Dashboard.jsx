@@ -8,10 +8,6 @@ import MainDashboard from './MainDashboard.jsx';
 import FocussedDashboard from './FocussedDashboard.jsx';
 import Validator from './Validator.jsx';
 
-function goTo(path) {
-  window.location = `#${path}`;
-}
-
 function Menu(props) {
   return <nav className='menu'>
     <ul>
@@ -28,7 +24,7 @@ export default class Dashboard extends Component {
   }
 
   async loadReports() {
-    this.setState({ loading: true });
+    this.setState({ data: [], loading: true });
     await loadReports({
       source: this.props.source,
       action: (data) => this.addReports(data),
@@ -44,21 +40,7 @@ export default class Dashboard extends Component {
 
   componentDidMount() {
     this.loadReports();
-
-    window.addEventListener('keydown', (e) => {
-      const actions = {
-        'escape': () => goTo('/'),
-        's': () => goTo('/capital/social'),
-        'h': () => goTo('/capital/human'),
-        'n': () => goTo('/capital/natural'),
-        'i': () => goTo('/capital/intellectual'),
-        'f': () => goTo('/capital/financial'),
-        'm': () => goTo('/capital/manufacturing'),
-        'v': () => goTo('/validator'),
-      };
-      const action = actions[e.key.toLowerCase()];
-      if (action !== undefined) action();
-    });
+    setInterval(() => this.loadReports(), 300000);
   }
 
   render() {

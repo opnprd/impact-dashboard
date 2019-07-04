@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import closeIcon from './close.svg';
 
 import Title from './Title.jsx';
-import { byCapital } from '../utils';
+import { byCapital, goTo, createKeydownHandler } from '../utils';
 
 function ReportReference(props) {
   const { title = (<em>(Unknown report title)</em>), link } = props;
@@ -29,27 +29,44 @@ function CloseButton(props) {
 }
 CloseButton.propTypes = { link: PropTypes.string };
 
-export default function FocussedDashboard(props) {
-  const { match: { params: { focus } }, data } = props;
-  const focussedData = data.filter(byCapital(focus));
+const shortcutHandler = createKeydownHandler({
+  actions: {
+    'escape': () => goTo('/'),
+    'v': () => goTo('/validator'),
+  },
+});
 
-  const reports = focussedData.map((_, idx) => (
-    <ReportReference key={ idx }
-      title={ _.description }
-      link={ _.url }
-    />
-  ));
+export default class FocussedDashboard extends Component {
+  render() {
+    const { match: { params: { focus } }, data } = this.props;
+    const focussedData = data.filter(byCapital(focus));
 
-  const link = '/';
+    const reports = focussedData.map((_, idx) => (
+      <ReportReference key={ idx }
+        title={ _.description }
+        link={ _.url }
+      />
+    ));
 
-  return (
-    <div className={ 'focussed ' + focus }>
-      <Title>{ focus } Capital Reports</Title>
-      { reports }
-      <CloseButton link={ link }/>
-    </div>
-  );
+    const link = '/';
+
+    return (
+      <div className={ 'focussed ' + focus }>
+        <Title>{ focus } Capital Reports</Title>
+        { reports }
+        <CloseButton link={ link }/>
+      </div>
+    );
+  }
+
+  componentDidMount() {
+    window.addEventListener('keydown', shortcutHandler);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('keydown', shortcutHandler);
+  }
 }
+
 FocussedDashboard.propTypes = {
   match: PropTypes.object,
   data: PropTypes.array,
