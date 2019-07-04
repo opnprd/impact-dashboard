@@ -4,16 +4,35 @@
   }
 }
 
-.dashboard {
+@mixin central-column {
   max-width: 960px;
+}
 
-  & > h1 {
-    text-align: center;
-    font-size: 3em;
+.dashboard {
+
+  header {
     background-color: $yorkshire-blue;
-    color: white;
-    margin: 0;
-    padding: 1em;
+    margin-bottom: 1em;
+
+    & > h1 {
+      @extend %centred;
+      @include central-column();
+      text-align: center;
+      font-size: 3em;
+      color: white;
+      padding: 1em;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    & > nav {
+      @extend %centred;
+      @include central-column();
+    }
+  }
+
+  main {
+    @include central-column();
+    @extend %centred;
   }
 
   .block {

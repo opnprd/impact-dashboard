@@ -55,17 +55,21 @@ export default class Dashboard extends Component {
     const { title } = this.props;
 
     return (<>
-      <Title level={1}>{ title }</Title>
       <Router>
-        <Menu />
-        <Switch>
-          <Route exact path="/"
-            render={props => <MainDashboard {...props} data={ data } /> } />
-          <Route path="/capital/:focus"
-            render={props => <FocussedDashboard {...props} data={ data } /> } />
-          <Route path="/validator"
-            render={props => <Validator {...props} /> } />
-        </Switch>
+        <header>
+          <Title level={1}>{ title }</Title>
+          <Menu />
+        </header>
+        <main>
+          <Switch>
+            <Route exact path="/"
+              render={props => <MainDashboard {...props} data={ data } /> } />
+            <Route path="/capital/:focus"
+              render={props => <FocussedDashboard {...props} data={ data } /> } />
+            <Route path="/validator"
+              render={props => <Validator {...props} /> } />
+          </Switch>
+        </main>
       </Router>
     </>);
   }
