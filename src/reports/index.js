@@ -1,4 +1,4 @@
-import yaml from 'js-yaml';
+import jsyaml from 'js-yaml';
 import { validateSyndicationFormat } from './validate';
 
 async function loadOneReport(options = {}) {
@@ -9,7 +9,7 @@ async function loadOneReport(options = {}) {
   try {
     const networkRequest = await fetch(url);
     const rawContent = await networkRequest.text();
-    content = yaml.safeLoad(rawContent);
+    content = jsyaml.safeLoad(rawContent);
   } catch (error) {
     console.error(error.message);
     return;
@@ -25,7 +25,7 @@ export async function loadReports(options) {
   let reports = [];
   try {
     const rawReports = await networkRequest.text();
-    reports = yaml.safeLoad(rawReports);
+    reports = jsyaml.safeLoad(rawReports);
   } catch (error) {
     console.error(error.message);
     throw error;

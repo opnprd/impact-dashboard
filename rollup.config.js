@@ -19,6 +19,11 @@ const isDev = (targetEnv === 'development');
 
 // Define baseline plugins for transformation
 const jsPlugins = [
+  resolve(),
+  commonjs({
+    include: 'node_modules/**',
+    namedExports: { 'node_modules/react-is/index.js': ['isValidElementType'] },
+  }),
   json({}),
   replace({ 'process.env.NODE_ENV': JSON.stringify(targetEnv) }),
   babel({
@@ -33,11 +38,6 @@ const jsPlugins = [
       '@babel/transform-runtime',
     ],
   }),
-  resolve(),
-  commonjs({
-    include: 'node_modules/**',
-    namedExports: { 'node_modules/react-is/index.js': ['isValidElementType'] },
-  }),
   isDev ? undefined : uglify(), // Uglify code unless we're targetting 'development'
   copy({ // Copy modules to the vendor directory
     targets: [
@@ -51,6 +51,7 @@ const jsPlugins = [
           'node_modules/react/umd/react.production.min.js',
           'node_modules/react-dom/umd/react-dom.development.js',
           'node_modules/react-dom/umd/react-dom.production.min.js',
+          'node_modules/js-yaml/dist/js-yaml.min.js',
         ],
         dest: `${targetDir}/js/vendor`,
       },
@@ -82,14 +83,29 @@ export default [
   {
     input: 'src/dashboard.js',
     plugins: jsPlugins,
-    external: ['react', 'react-dom'],
+    external: ['react', 'react-dom', 'js-yaml', 'highlight.js'],
     output: {
       dir: `${targetDir}/js`,
       format: 'iife',
       globals: {
         react: 'React',
         'react-dom': 'ReactDOM',
+        'js-yaml': 'jsyaml',
+        'highlight.js': 'hljs',
       },
+    },
+  },
+  {
+    input: 'src/highlight.js',
+    plugins: [
+      resolve(),
+      commonjs(),
+      uglify(),
+    ],
+    output: {
+      file: `${targetDir}/js/highlight.min.js`,
+      name: 'hljs',
+      format: 'iife',
     },
   },
 ];

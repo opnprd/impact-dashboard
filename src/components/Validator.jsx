@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import yaml from 'js-yaml';
+import jsyaml from 'js-yaml';
 import hljs from 'highlight.js';
 
 import Title from './Title.jsx';
@@ -52,7 +52,7 @@ function validate(value) {
   let valid;
   let errors;
   try {
-    const schema = yaml.safeLoad(value);
+    const schema = jsyaml.safeLoad(value);
     ({ valid, errors = [] } = validateSyndicationFormat(schema));
   } catch (error) {
     console.error(error);
