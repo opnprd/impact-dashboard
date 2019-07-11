@@ -14,15 +14,29 @@
     background-color: $yorkshire-blue;
     margin-bottom: 1em;
 
+    .logo {
+      @extend %centred;
+      height: 1.5em;
+      display: block;
+      @include desktop {
+        padding-left: 0.5em;
+        vertical-align: middle;
+        display: inline-block;
+      }
+    }
+
     & > h1 {
       @extend %centred;
       @include central-column();
       text-align: center;
-      font-size: 3em;
+      font-size: 2em;
       color: white;
       padding: 1em;
       margin-top: 0;
       margin-bottom: 0;
+      @include desktop {
+        font-size: 3em;
+      }
     }
     & > nav {
       @extend %centred;

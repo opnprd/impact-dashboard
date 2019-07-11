@@ -24,8 +24,7 @@ function CloseButton(props) {
     id='dismiss'
     className='dismiss'
     alt='Dismiss'
-    dangerouslySetInnerHTML={{ __html: closeIcon }}
-  ></Link>;
+  ><img src={ closeIcon } /></Link>;
 }
 CloseButton.propTypes = { link: PropTypes.string };
 

@@ -8,6 +8,8 @@ import MainDashboard from './MainDashboard.jsx';
 import FocussedDashboard from './FocussedDashboard.jsx';
 import Validator from './Validator.jsx';
 
+import whiteRose from './images/white-rose.svg';
+
 function Menu(props) {
   return <nav className='menu'>
     <ul>
@@ -52,7 +54,10 @@ export default class Dashboard extends Component {
     return (<>
       <Router>
         <header>
-          <Title level={1}>{ title }</Title>
+          <Title level={1}>
+            { title }
+            <img src={ whiteRose } id='rose' className='logo'/>
+          </Title>
           <Menu />
         </header>
         <main>
