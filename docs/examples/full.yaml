@@ -5,7 +5,7 @@
   measure:
     value: 4.9
     unit: percent
-    label: Apprenticship completions by as % of workforce
+    label: Apprenticeship completions by as % of workforce
 - url: https://example.com/reports/environment
   description: An example natural capital report
   capital: natural
