@@ -55,9 +55,9 @@ function validate(value) {
     const schema = jsyaml.safeLoad(value);
     ({ valid, errors = [] } = validateSyndicationFormat(schema));
   } catch (error) {
-    console.error(error);
     valid = false;
-    errors = [ { message: 'invalid document', path: '' } ];
+    const { message } = error;
+    errors = [ { message, path: '' } ];
   }
 
   return { valid, errors };
