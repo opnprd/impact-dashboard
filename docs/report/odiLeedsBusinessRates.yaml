@@ -1,0 +1,37 @@
+---
+- url: https://odileeds.org/projects/business-rates
+  capital: social
+  description: Business rates report for City of Bradford MDC
+  geography: E08000032
+- url: https://odileeds.org/projects/business-rates
+  capital: social
+  description: Business rates report for Calderdale Council
+  geography: E08000033
+- url: https://odileeds.org/projects/business-rates
+  capital: social
+  description: Business rates report for Kirklees Council
+  geography: E08000034
+- url: https://odileeds.org/projects/business-rates
+  capital: social
+  description: Business rates report for Hambleton District Council
+  geography: E07000164
+- url: https://odileeds.org/projects/business-rates
+  capital: social
+  description: Business rates report for Harrogate Borough Council
+  geography: E07000165
+- url: https://odileeds.org/projects/business-rates
+  capital: social
+  description: Business rates report for Leeds City Council
+  geography: E08000035
+- url: https://odileeds.org/projects/business-rates
+  capital: social
+  description: Business rates report for the Borough of Scarborough
+  geography: E07000168
+- url: https://odileeds.org/projects/business-rates
+  capital: social
+  description: Business rates report for Selby District Council
+  geography: E07000169
+- url: https://odileeds.org/projects/business-rates
+  capital: social
+  description: Business rates report for Wakefield Council
+  geography: E08000036
