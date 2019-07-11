@@ -120,7 +120,7 @@ export default class Validator extends Component {
 
   componentDidMount() {
     window.addEventListener('keydown', shortcutHandler);
-    hljs.initHighlightingOnLoad();
+    document.querySelectorAll('pre code').forEach(block => hljs.highlightBlock(block));
     this.loadRsf('./examples/minimal.yaml');
   }
 
