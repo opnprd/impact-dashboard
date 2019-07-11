@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import closeIcon from './close.svg';
+import closeIcon from './images/close.svg';
 
 import Title from './Title.jsx';
 import { byCapital, goTo, createKeydownHandler } from '../utils';
