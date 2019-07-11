@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import yaml from 'js-yaml';
+import hljs from 'highlight.js';
 
 import Title from './Title.jsx';
 
@@ -119,6 +120,7 @@ export default class Validator extends Component {
 
   componentDidMount() {
     window.addEventListener('keydown', shortcutHandler);
+    hljs.initHighlightingOnLoad();
     this.loadRsf('./examples/minimal.yaml');
   }
 
