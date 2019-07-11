@@ -1,3 +1,4 @@
+import yaml from 'js-yaml';
 import { validateSyndicationFormat } from './validate';
 
 async function loadOneReport(options = {}) {
@@ -7,8 +8,10 @@ async function loadOneReport(options = {}) {
   let content;
   try {
     const networkRequest = await fetch(url);
-    content = await networkRequest.json();
+    const rawContent = await networkRequest.text();
+    content = yaml.safeLoad(rawContent);
   } catch (error) {
+    console.error(error.message);
     return;
   }
   if (validateSyndicationFormat(content).valid) {

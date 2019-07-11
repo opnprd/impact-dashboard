@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import yaml from 'js-yaml';
 
 import Title from './Title.jsx';
 
@@ -51,11 +52,12 @@ function validate(value) {
   let valid;
   let errors;
   try {
-    const schema = JSON.parse(value);
+    const schema = yaml.safeLoad(value);
     ({ valid, errors = [] } = validateSyndicationFormat(schema));
   } catch (error) {
+    console.error(error);
     valid = false;
-    errors = [ { message: 'invalid JSON document', path: '' } ];
+    errors = [ { message: 'invalid document', path: '' } ];
   }
 
   return { valid, errors };

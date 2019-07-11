@@ -4,5 +4,5 @@
   "./examples/odileeds.org/data/uni-yh.json",
   "./examples/yorkshirewater.co.uk/capitals/data/apprenticeships.json",
   "./examples/yorkshirewater.co.uk/capitals/data/female-leaders.json",
-  "./examples/yorkshirewater.co.uk/capitals/data/rivers.json"
+  "./examples/yorkshirewater.co.uk/capitals/data/rivers.yaml"
 ]

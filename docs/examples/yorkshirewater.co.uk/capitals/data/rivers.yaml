@@ -1,0 +1,8 @@
+url: http:///fake_report
+capital: natural
+description: River improvement report (SAMPLE)
+measure:
+  value: 88
+  unit: km
+  label: Length of river improved
+geography: E12000003
