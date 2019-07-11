@@ -8,10 +8,15 @@ import MainDashboard from './MainDashboard.jsx';
 import FocussedDashboard from './FocussedDashboard.jsx';
 import Validator from './Validator.jsx';
 
+import burger from './images/burger.svg';
 import whiteRose from './images/white-rose.svg';
 
 function Menu(props) {
   return <nav className='menu'>
+    <label className='button dismiss' htmlFor="show-menu">
+      <img src={ burger } />
+    </label>
+    <input type="checkbox" id="show-menu" />
     <ul>
       <li><NavLink exact={ true } to="/">Dashboard</NavLink></li>
       <li><NavLink to="/validator">Report Syndication</NavLink></li>

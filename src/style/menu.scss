@@ -1,13 +1,42 @@
 .menu {
-  background-color: $yorkshire-blue;
+  position: absolute;
+  top: 0;
+  right: 0;
+
   color: white;
+
+  padding-top: 10px;
+  padding-right: 60px;
+
+  .button {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
   ul {
+    position: relative;
     padding: 0;
     margin: 0;
+    display: none;
+    list-style: none;
+    background-color: change-color($color: $yorkshire-blue, $lightness: 95%);
     li {
-      display: inline;
+      text-align: right;
+      color: $yorkshire-blue;
     }
   }
+  #show-menu {
+    display: none;
+    position: relative;
+    top: 0;
+    right: 0;
+  }
+  #show-menu:checked ~ ul {
+    display: block;
+  }
+
   a {
     padding: 1em;
     color: inherit;
@@ -16,9 +45,29 @@
     &:hover {
       text-decoration: underline;
     }
-    &.active {
-      color: $yorkshire-blue;
-      background-color: white;
+  }
+  @include desktop {
+    background-color: $yorkshire-blue;
+    position: initial;
+    top: initial;
+    right: initial;
+    .button {
+      display: none;
+    }
+    ul {
+      display: initial;
+      background-color: initial;
+      li {
+        color: initial;
+        display: inline;
+      }  
+      a {
+        color: white;
+        &.active {
+          color: $yorkshire-blue;
+          background-color: white;
+        }
+      }
     }
   }
 }
