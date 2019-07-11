@@ -25,7 +25,6 @@ function Documentation() {
   return <>
     <ShowHide id='show-doc' label='Show documentation'/>
     <section id='documentation'>
-      <Title>Documentation</Title>
       <section
         dangerouslySetInnerHTML={{ __html: syndicationBlurb }}
       />
@@ -75,13 +74,16 @@ export default class Validator extends Component {
   }
 
   render() {
-    let errorSection;
+    let errorSection = <section id='errors'>
+      <Title level={ 3 }>Great job! </Title>
+      <p>No errors in that file!</p>
+    </section>;
     const { valid, errors } = validate(this.state.value);
 
     if (!valid) {
       const errorComponents = errors.map((_, idx) => (<ValidationError key={ idx } error={ _ } />));
       errorSection = <section id='errors'>
-        <Title level={ 2 }>Schema Errors</Title>
+        <Title level={ 3 }>Schema Errors</Title>
         <ul>
           { errorComponents }
         </ul>
@@ -90,6 +92,7 @@ export default class Validator extends Component {
     return <>
       <Documentation />
       <section className='validator'>
+        <Title>Validator</Title>
         <textarea value={this.state.value} onChange={this.updateSchema}></textarea>
         { errorSection }
       </section>

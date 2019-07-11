@@ -55,6 +55,12 @@ const jsPlugins = [
         dest: `${targetDir}/js/vendor`,
       },
       {
+        src: [
+          'node_modules/highlight.js/styles/default.css',
+        ],
+        dest: `${targetDir}/style/highlight.js/`,
+      },
+      {
         src: 'examples/*',
         dest: `${targetDir}/examples`,
       },

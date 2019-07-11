@@ -1,0 +1,18 @@
+- url: https://example.com/reports/social
+  description: An example social capital report
+  capital: social
+  geography: E08000035
+  measure:
+    value: 4.9
+    unit: percent
+    label: Apprenticship completions by as % of workforce
+- url: https://example.com/reports/environment
+  description: An example natural capital report
+  capital: natural
+  geography: E12000003
+  measure:
+    - value: 2
+      label: Areas of Outstanding Natural Beauty
+    - value: 807
+      unit: km-squared
+      label: Area of land designated as AONB in Yorkshire and the Humber
