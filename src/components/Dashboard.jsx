@@ -13,7 +13,7 @@ import whiteRose from './images/white-rose.svg';
 
 function Menu(props) {
   return <nav className='menu'>
-    <label className='button dismiss' htmlFor="show-menu">
+    <label className='button' htmlFor="show-menu">
       <img src={ burger } />
     </label>
     <input type="checkbox" id="show-menu" />
