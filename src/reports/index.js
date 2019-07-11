@@ -24,8 +24,10 @@ export async function loadReports(options) {
   const networkRequest = await fetch(source);
   let reports = [];
   try {
-    reports = await networkRequest.json();
+    const rawReports = await networkRequest.text();
+    reports = yaml.safeLoad(rawReports);
   } catch (error) {
+    console.error(error.message);
     throw error;
   }
   await Promise.all(reports.map(url => loadOneReport({ url, action })));

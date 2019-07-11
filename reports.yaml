@@ -1,0 +1,10 @@
+- ./report/odiLeedsBusinessRates.yaml
+
+
+
+# Examples below
+- ./examples/odileeds.org/data/uni-wy.json
+- ./examples/odileeds.org/data/uni-yh.json
+- ./examples/yorkshirewater.co.uk/capitals/data/apprenticeships.json
+- ./examples/yorkshirewater.co.uk/capitals/data/female-leaders.json
+- ./examples/yorkshirewater.co.uk/capitals/data/rivers.yaml

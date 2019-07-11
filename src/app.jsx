@@ -6,7 +6,7 @@ export function initialise(options = {}) {
   const { appRootId = 'dashboard-app' } = options;
 
   ReactDOM.render(
-    <Dashboard source='./config/reports.json'
+    <Dashboard source='./config/reports.yaml'
       title='Yorkshire Impact Dashboard'
     />,
     document.getElementById(appRootId)

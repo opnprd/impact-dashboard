@@ -59,7 +59,7 @@ const jsPlugins = [
         dest: `${targetDir}/examples`,
       },
       {
-        src: 'reports.json',
+        src: 'reports.yaml',
         dest: `${targetDir}/config`,
       },
     ],
