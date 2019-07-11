@@ -73,6 +73,17 @@ export default class Validator extends Component {
     this.setState({ value: event.target.value });
   }
 
+  async loadRsf(url) {
+    let content;
+    try {
+      const response = await fetch(url);
+      content = await response.text();
+    } catch (error) {
+      return;
+    }
+    this.setState(() => ({ value: content }));
+  }
+
   render() {
     let errorSection = <section id='errors'>
       <Title level={ 3 }>Great job! </Title>
@@ -94,6 +105,13 @@ export default class Validator extends Component {
       <section className='validator'>
         <Title>Validator</Title>
         <textarea value={this.state.value} onChange={this.updateSchema}></textarea>
+        <p>
+          Examples:
+          <button onClick={ () => this.loadRsf('./examples/minimal.yaml') }>Load minimal YAML</button>
+          <button onClick={ () => this.loadRsf('./examples/minimal.json') }>Load minimal JSON</button>
+          <button onClick={ () => this.loadRsf('./examples/full.yaml') }>Load full YAML</button>
+          <button onClick={ () => this.loadRsf('./examples/full.json') }>Load full JSON</button>
+        </p>
         { errorSection }
       </section>
     </>;
@@ -101,6 +119,7 @@ export default class Validator extends Component {
 
   componentDidMount() {
     window.addEventListener('keydown', shortcutHandler);
+    this.loadRsf('./examples/minimal.yaml');
   }
 
   componentWillUnmount() {
