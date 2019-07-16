@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { loadReports } from '../reports';
@@ -7,22 +7,9 @@ import Title from './Title.jsx';
 import MainDashboard from './MainDashboard.jsx';
 import FocussedDashboard from './FocussedDashboard.jsx';
 import Validator from './Validator.jsx';
+import Menu from './Menu.jsx';
 
-import burger from './images/burger.svg';
 import whiteRose from './images/white-rose.svg';
-
-function Menu(props) {
-  return <nav className='menu'>
-    <label className='button' htmlFor="show-menu">
-      <img src={ burger } />
-    </label>
-    <input type="checkbox" id="show-menu" />
-    <ul>
-      <li><NavLink exact={ true } to="/">Dashboard</NavLink></li>
-      <li><NavLink to="/validator">Report Syndication</NavLink></li>
-    </ul>
-  </nav>;
-}
 
 export default class Dashboard extends Component {
   constructor(props) {
