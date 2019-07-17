@@ -9,7 +9,7 @@ import { byCapital, goTo, createKeydownHandler } from '../utils';
 
 function ReportReference(props) {
   const { title = (<em>(Unknown report title)</em>), link } = props;
-  return <div>{ title } <a href={ link }>Link</a></div>;
+  return <div className='report'><a href={ link }>{ title }</a></div>;
 }
 ReportReference.propTypes = {
   link: PropTypes.string.isRequired,
