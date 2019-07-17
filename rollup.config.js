@@ -69,6 +69,10 @@ const jsPlugins = [
         src: 'reports.yaml',
         dest: `${targetDir}/config`,
       },
+      {
+        src: 'src/reports/schemas/reportSyndicationFormat.json',
+        dest: targetDir,
+      }
     ],
   }),
   scss({
