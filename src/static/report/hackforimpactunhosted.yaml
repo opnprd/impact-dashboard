@@ -18,4 +18,7 @@
   description: Upstream - Flood Impact (Hack for Impact)
   capital: natural
 
+- url: http://ubuntu18vm-sorrel.uksouth.cloudapp.azure.com
+  description: Yorkshire Digital Skills Bubble (Hack for Impact)
+  capital: human
 
