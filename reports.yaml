@@ -4,6 +4,7 @@
 # Hack for Impact reports
 - https://opnprd.com/yorkshire-scoreboard/rsf.yaml
 - https://opnprd.com/apprenticeship-explorer/rsf.yaml
+- ./report/hackforimpactunhosted.yaml
 
 # Examples below
 # - ./examples/odileeds.org/data/uni-wy.json

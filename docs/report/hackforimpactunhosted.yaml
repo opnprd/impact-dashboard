@@ -1,0 +1,21 @@
+- url: https://fletcherapps.shinyapps.io/hackapp/
+  description: Natural Capital Index (Hack for Impact)
+  capital: natural
+
+- url: https://datastudio.google.com/s/leGPcePUfcI
+  description: Engagilty - Social Responsiveness Tool (Hack for Impact)
+  capital: social
+
+- url: https://public.tableau.com/profile/jen2030#!/vizhome/ConnectivitySocialCapital/Dashboard1
+  description: Social Network - Social Impacts of Connectivity (Hack for Impact)
+  capital: social
+
+- url: http://ourfutureleeds.azurewebsites.net/
+  description: Carbon Budget Dashboard (Hack for Impact)
+  capital: natural
+
+- url: https://github.com/Sparrow0hawk/YO_Floodrisk/blob/master/data/pyfloodmap.geojson
+  description: Upstream - Flood Impact (Hack for Impact)
+  capital: natural
+
+
