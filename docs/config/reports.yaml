@@ -1,6 +1,8 @@
-- ./report/odiLeedsBusinessRates.yaml
+# ODI Leeds reports
+# - ./report/odiLeedsBusinessRates.yaml
 
-
+# Hack for Impact reports
+- https://opnprd.com/yorkshire-scoreboard/rsf.yaml
 
 # Examples below
 # - ./examples/odileeds.org/data/uni-wy.json
