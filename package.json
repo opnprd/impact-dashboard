@@ -45,7 +45,7 @@
     "sinon-chai": "^3.3.0"
   },
   "dependencies": {
-    "ajv": "^6.10.0",
+    "ajv": "^6.12.3",
     "highlight.js": "^9.15.8",
     "js-yaml": "^3.13.1",
     "react-router-dom": "^5.0.1",
